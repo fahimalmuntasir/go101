@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strings"
 )
 
 // ============================================================
@@ -11,53 +10,74 @@ import (
 
 // --- EXAMPLE ---
 
-var course = "Go 101" // package-level variable
+// var course = "Go 101" // package-level variable
 
 func main() {
-	fmt.Println("Welcome to", course)
 
-	// Variables & short declaration
-	name := "Ada"
-	age := 25
-	isStudent := true
-	fmt.Printf("name=%s age=%d student=%t\n", name, age, isStudent)
 
-	// String formatting
-	greeting := fmt.Sprintf("Hello, %s!", strings.ToUpper(name))
-	fmt.Println(greeting)
+	maxRetries:=5
+	fmt.Println("maxRetries =", maxRetries)
 
-	// Multiple return values + error handling
-	result, err := add(21, 21)
-	if err != nil {
-		fmt.Println("add error:", err)
-		return
-	}
-	fmt.Println("21 + 21 =", result)
+	fmt.Printf("%d is even? ->%t \n", 6, isEven(6))
 
-	// Switch statement (no break needed in Go)
-	switch {
-	case result > 50:
-		fmt.Println("Big number!")
-	case result == 42:
-		fmt.Println("The answer to everything!")
-	default:
-		fmt.Println("Just a number:", result)
-	}
+	fmt.Printf("%d is even? ->%t \n ", 7, isEven(7))
 
-	// For loop + defer (LIFO order)
-	for i := 0; i < 3; i++ {
-		defer fmt.Println("deferred:", i)
-		fmt.Println("loop iteration:", i)
-	}
+	result:=greet("Fahim")
+	fmt.Println(result)
+
+	// fmt.Println("Welcome to", course)
+
+	// // Variables & short declaration
+	// name := "Ada"
+	// age := 25
+	// isStudent := true
+	// fmt.Printf("name=%s age=%d student=%t\n", name, age, isStudent)
+
+	// // String formatting
+	// greeting := fmt.Sprintf("Hello, %s!", strings.ToUpper(name))
+	// fmt.Println(greeting)
+
+	// // Multiple return values + error handling
+	// result, err := add(21, 21)
+	// if err != nil {
+	// 	fmt.Println("add error:", err)
+	// 	return
+	// }
+	// fmt.Println("21 + 21 =", result)
+
+	// // Switch statement (no break needed in Go)
+	// switch {
+	// case result > 50:
+	// 	fmt.Println("Big number!")
+	// case result == 42:
+	// 	fmt.Println("The answer to everything!")
+	// default:
+	// 	fmt.Println("Just a number:", result)
+	// }
+
+	// // For loop + defer (LIFO order)
+	// for i := 0; i < 3; i++ {
+	// 	defer fmt.Println("deferred:", i)
+	// 	fmt.Println("loop iteration:", i)
+	// }
 }
 
-func add(a, b int) (int, error) {
-	sum := a + b
-	if sum < 0 {
-		return 0, fmt.Errorf("negative sum: %d", sum)
-	}
-	return sum, nil
+func isEven(n int) bool {
+	return n%2 == 0
 }
+
+func greet(name string) string {
+	return fmt.Sprintf("Hello, %s! Welcome to Go 101.", name)
+}
+
+
+// func add(a, b int) (int, error) {
+// 	sum := a + b
+// 	if sum < 0 {
+// 		return 0, fmt.Errorf("negative sum: %d", sum)
+// 	}
+// 	return sum, nil
+// }
 
 // ============================================================
 // PRACTICE QUESTIONS
